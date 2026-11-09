@@ -1,0 +1,20 @@
+name: delivery-lab7
+services:
+  db:
+    image: postgres:17-alpine
+    ports:
+      - "127.0.0.1:5547:5432"
+    environment:
+      POSTGRES_DB: delivery_lab7
+      POSTGRES_USER: lab7
+      POSTGRES_PASSWORD: lab7_local
+    volumes:
+      - lab7_data:/var/lib/postgresql/data
+      - ./migrations/V1__create_tables.sql:/docker-entrypoint-initdb.d/001-schema.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U lab7 -d delivery_lab7"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+volumes:
+  lab7_data:

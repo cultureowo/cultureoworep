@@ -1,0 +1,12 @@
+node_modules/
+tools/
+lab7-api*.log
+
+dist/
+reports/
+.env
+.env.*
+!.env.example
+.idea/
+temp/
+performance/results/
