@@ -34,8 +34,16 @@ Jest запускається з `--runInBand`, щоб тести з очище�
 
 Локальний Git ініціалізовано (гілка `main`). Docker запущено; локально успішно
 виконано всі 31 інтеграційний/API-тест, а також 12 unit-тестів і build.
-Віддалений репозиторій ще потрібно підключити. Локальна перевірка не є доказом
-успішного GitHub pipeline.
+Репозиторій підключено: https://github.com/cultureowo/cultureoworep.
+Локальна перевірка не є доказом успішного GitHub pipeline.
+
+Фактичні автоматичні запуски після push:
+
+- [Основна гілка main](https://github.com/cultureowo/cultureoworep/actions/runs/42594519901).
+- [Навмисна помилка в lab9/intentional-failure](https://github.com/cultureowo/cultureoworep/actions/runs/42594573322).
+
+У `main` залишено правильний тест. Навмисна помилка збережена лише в окремій
+гілці `lab9/intentional-failure`. Для захисту можна одразу відкрити ці запуски.
 
 1. Додати файли проєкту до свого GitHub-репозиторію, включно з прихованою папкою
    `.github`, `package.json`, `package-lock.json`, `scripts/`, `src/`, `test/`
@@ -58,8 +66,23 @@ Jest запускається з `--runInBand`, щоб тести з очище�
 6. Повернути `REGISTERED`, зробити commit і push та перевірити відновлення
    зеленого статусу. Не залишати навмисну помилку у фінальному коді.
 
-Для захисту потрібні фактичні URL/скриншоти успішного та невдалого запусків,
-логи причини падіння і завантажений artifact. Їх слід додати після push.
+Обидва фактичні запуски завершені: основний — **success**, демонстраційний —
+**failure**. В обох build та unit успішні. Integration/API: **31 passed**
+в основному запуску та **30 passed, 1 failed** у демонстраційному.
+
+Завантажені з GitHub artifacts збережено в репозиторії:
+
+- [Успішний test report](docs/lab9/success-integration-api.json).
+- [Невдалий test report](docs/lab9/failure-integration-api.json).
+- [Статуси jobs успішного запуску](docs/lab9/success-run.json).
+- [Статуси jobs невдалого запуску](docs/lab9/failure-run.json).
+
+Причина падіння: у `test/service.integration.test.js:371` тест
+`new shipment is persisted with Registered status` очікує `Cancelled`,
+але отримує `Registered`. Цю розбіжність видно в `failureMessages` JSON-звіту
+та [логах failed job](https://github.com/cultureowo/cultureoworep/actions/runs/42594573322/job/129084339385).
+У failed запуску artifact також успішно збережено. Копії в `docs/lab9/`
+залишаться доступними після завершення 14-денного строку зберігання artifacts.
 
 ## Локальні команди
 

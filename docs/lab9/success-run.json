@@ -1,0 +1,26 @@
+﻿{
+    "run_id":  42594519901,
+    "url":  "https://github.com/cultureowo/cultureoworep/actions/runs/42594519901",
+    "commit":  "92bd8c0876ba43b0b1591b1f4ceec2f2dd521eac",
+    "branch":  "main",
+    "event":  "push",
+    "status":  "completed",
+    "conclusion":  "success",
+    "jobs":  [
+                 {
+                     "name":  "build",
+                     "conclusion":  "success",
+                     "html_url":  "https://github.com/cultureowo/cultureoworep/actions/runs/42594519901/job/129083818786"
+                 },
+                 {
+                     "name":  "unit",
+                     "conclusion":  "success",
+                     "html_url":  "https://github.com/cultureowo/cultureoworep/actions/runs/42594519901/job/129083994445"
+                 },
+                 {
+                     "name":  "integration-api",
+                     "conclusion":  "success",
+                     "html_url":  "https://github.com/cultureowo/cultureoworep/actions/runs/42594519901/job/129084136968"
+                 }
+             ]
+}
