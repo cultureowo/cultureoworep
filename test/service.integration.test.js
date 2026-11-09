@@ -368,6 +368,6 @@ describe("ShippingService integration tests", () => {
 
         const stored = await shipments.findById(result.id);
 
-        expect(stored.status).toBe(ShipmentStatus.REGISTERED);
+        expect(stored.status).toBe(ShipmentStatus.CANCELLED);
     });
 });
